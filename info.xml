@@ -18,9 +18,12 @@
   <version>1.2</version>
   <develStage>stable</develStage>
   <compatibility>
-    <ver>5.12</ver>
+    <ver>5.29</ver>
   </compatibility>
   <comments>Support this extension by donating to CiviCRM!</comments>
+  <classloader>
+    <psr4 prefix="Civi\" path="Civi" />
+  </classloader>
   <civix>
     <namespace>CRM/Tutorial</namespace>
   </civix>
