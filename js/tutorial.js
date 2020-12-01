@@ -19,6 +19,19 @@
     }
   });
 
+  // Copied from hopscotch:getStepTargetHelper
+  function getTarget(target) {
+    var parts = target.split(' '),
+      context = document;
+    // Get element from within iframe
+    if ($(parts[0]).is('iframe')) {
+      context = $(parts[0]).contents();
+      target = parts.slice(1).join(' ');
+    }
+    var result = jQuery(target, context);
+    return result.length ? result[0] : null;
+  }
+
   function loadTutorials() {
     var autoStartTutorial,
       viewMenuItems = [],
@@ -85,7 +98,7 @@
     // Poll the dom at intervals to see if the element of the first step is present
     if (autoStartTutorial) {
       poll = setInterval(function() {
-        if ($(autoStartTutorial.steps[0].target).length) {
+        if (getTarget(autoStartTutorial.steps[0].target)) {
           startTutorial(autoStartTutorial.id);
           clearInterval(poll);
           poll = null;
