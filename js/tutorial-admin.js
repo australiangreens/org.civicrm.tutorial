@@ -92,7 +92,7 @@
     setSaved(false);
     refreshAccordions();
   }
-  
+
   function refreshAccordions(activeIndex) {
     $('#civitutorial-steps').accordion('refresh').find('h5').off('keydown');
     if (typeof activeIndex === 'number') {
@@ -113,6 +113,9 @@
     });
     if (hash && hash.indexOf('?') > -1) {
       hash = hash.split('?')[0];
+    }
+    if (hash) {
+      hash = hash.replace(/\/[0-9]+/g, '/*');
     }
     return path + query + hash;
   }

@@ -2,7 +2,7 @@
   CRM.vars.tutorial = CRM.vars.tutorial || {};
   CRM.vars.tutorial.items = CRM.vars.tutorial.items || {};
   CRM.vars.tutorial.menuItems = [];
-  
+
   var route, poll, supportMenuName,
     tutorials = CRM.vars.tutorial.items;
 
@@ -37,13 +37,26 @@
       clearInterval(poll);
       poll = null;
     }
+
+    function compare(tutorialUrl) {
+      var tutorialRoute = tutorialUrl.split('#')[1] || '';
+      if (tutorialRoute === hash || !tutorialRoute) {
+        return tutorialRoute === hash;
+      }
+      tutorialRoute = _.trim(tutorialRoute, '/!');
+      var existingRoute = _.trim(hash, '/!'),
+        search = _.escapeRegExp(tutorialRoute).replace(/\\\*/g, '.*'),
+        searchExp = new RegExp(search);
+      return searchExp.test(existingRoute);
+    }
+
     _.each(CRM.vars.tutorial.menuItems, function(item) {
       CRM.menubar.removeItem('tutorial_view:' + item);
       CRM.menubar.removeItem('tutorial_edit:' + item);
     });
     CRM.vars.tutorial.menuItems = [];
     _.each(tutorials, function(tutorial, id) {
-      if ((tutorial.url.split('#')[1] || '') === hash) {
+      if (compare(tutorial.url)) {
         CRM.vars.tutorial.menuItems.push(id);
         viewMenuItems.push({
           label: tutorial.title,
