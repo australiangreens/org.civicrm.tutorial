@@ -23,7 +23,7 @@ function civicrm_api3_tutorial_create($params) {
  * @param array $fields
  */
 function _civicrm_api3_tutorial_create_spec(&$fields) {
-  $fields = CRM_Tutorial_BAO_Tutorial::fields();
+  $fields = array_column(CRM_Tutorial_BAO_Tutorial::fields(), NULL, 'name');
 }
 
 /**
@@ -63,7 +63,7 @@ function civicrm_api3_tutorial_get($params) {
  * @param array $fields
  */
 function _civicrm_api3_tutorial_get_spec(&$fields) {
-  $fields = CRM_Tutorial_BAO_Tutorial::fields();
+  $fields = array_column(CRM_Tutorial_BAO_Tutorial::fields(), NULL, 'name');
 }
 
 /**

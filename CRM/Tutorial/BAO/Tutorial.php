@@ -252,7 +252,7 @@ class CRM_Tutorial_BAO_Tutorial {
   /**
    * Mark tutorial as viewed by the current user
    *
-   * @param string $params
+   * @param array $params
    */
   public static function mark($params) {
     $cid = CRM_Core_Session::getLoggedInContactID();
