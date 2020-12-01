@@ -208,9 +208,10 @@ class CRM_Tutorial_BAO_Tutorial {
       CRM_Core_Permission::check('access CiviCRM')
     ) {
       $ranAlready = TRUE;
-      $resources = CRM_Core_Resources::singleton()
+      $resources = Civi::resources()
         ->addStyleFile('org.civicrm.tutorial', 'vendor/hopscotch/css/hopscotch.min.css')
-        ->addScriptFile('org.civicrm.tutorial', 'vendor/hopscotch/js/hopscotch.min.js', -103, 'html-header')
+        // Using patched version of hopscotch.js
+        ->addScriptFile('org.civicrm.tutorial', 'vendor/hopscotch/js/hopscotch.js', -103, 'html-header')
         ->addScriptFile('org.civicrm.tutorial', 'js/tutorial.js', -102, 'html-header');
       if (CRM_Core_Permission::check('administer CiviCRM')) {
         $resources
