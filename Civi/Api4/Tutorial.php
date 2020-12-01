@@ -5,6 +5,7 @@ namespace Civi\Api4;
 /**
  * Tutorial entity - onscreen walk-throughs to help new users learn CiviCRM.
  *
+ * @searchable false
  * @see https://lab.civicrm.org/extensions/tutorial
  */
 class Tutorial extends Generic\BasicEntity {
