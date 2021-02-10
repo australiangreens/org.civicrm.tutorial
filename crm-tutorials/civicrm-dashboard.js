@@ -2,13 +2,13 @@
     "id": "civicrm-dashboard",
     "title": ts("Welcome to CiviCRM!"),
     "url": "civicrm/dashboard",
-    "auto_run": true,
+    "auto_start": true,
     "steps": [
         {
             "target": "#crm-dashboard-configure",
             "title": ts("Welcome to CiviCRM!"),
             "placement": "bottom",
-            "content": ts("This is your default CiviCRM dashboard. It includes information to help you get started. You can customize it, but we will get back to this later!"),
+            "content": ts("This is your CiviCRM dashboard. It includes information to help you get started. You can customize it, but we will get back to this later!"),
             "icon": ""
         },
         {
